@@ -1,13 +1,94 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7Mb-k3-vcS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Top Stories-->
+        <scene sceneID="a8a-hH-BUk">
+            <objects>
+                <tableViewController title="Top Stories" id="8z5-Rp-Om9" customClass="StoryTableViewController" customModule="News_Feed" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="229" sectionHeaderHeight="28" sectionFooterHeight="28" id="6jG-F1-DZd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StoryCell" rowHeight="229" id="t83-FD-jff" userLabel="StoryCell" customClass="StoryCell" customModule="News_Feed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="229"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t83-FD-jff" id="wqG-xO-vua">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="228"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="HJa-Z7-RZS">
+                                            <rect key="frame" x="106" y="0.0" width="388" height="228"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Milos Raonic falls to Andy Murray in Wimbledon final" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nXF-F2-bVe">
+                                            <rect key="frame" x="-78" y="189" width="399" height="39"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="0.0" height="40"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="HJa-Z7-RZS" secondAttribute="bottom" id="CbJ-0t-Jns"/>
+                                        <constraint firstItem="nXF-F2-bVe" firstAttribute="leading" secondItem="wqG-xO-vua" secondAttribute="leadingMargin" id="EKY-lO-hcx"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="nXF-F2-bVe" secondAttribute="trailing" id="Fzj-BM-D1j"/>
+                                        <constraint firstItem="nXF-F2-bVe" firstAttribute="bottom" secondItem="wqG-xO-vua" secondAttribute="bottomMargin" id="Rbe-OD-Lzv"/>
+                                        <constraint firstItem="HJa-Z7-RZS" firstAttribute="top" secondItem="wqG-xO-vua" secondAttribute="topMargin" id="Y8A-jv-dS0"/>
+                                        <constraint firstItem="HJa-Z7-RZS" firstAttribute="leading" secondItem="wqG-xO-vua" secondAttribute="leadingMargin" constant="20" id="j8O-I3-vnP"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="HJa-Z7-RZS" secondAttribute="trailing" constant="20" id="ked-q7-Zz3"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="thumbnail" destination="HJa-Z7-RZS" id="sJw-Pb-bQd"/>
+                                    <outlet property="title" destination="nXF-F2-bVe" id="0GL-9T-afj"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8z5-Rp-Om9" id="92k-tw-Rbr"/>
+                            <outlet property="delegate" destination="8z5-Rp-Om9" id="W9d-8K-eUn"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Top Stories" id="LIh-M2-zEO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ph6-Lg-j8I">
+                            <connections>
+                                <action selector="refresh:" destination="8z5-Rp-Om9" id="HJv-ib-4bd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sh2-pM-4Ej" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-271" y="269"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="J4n-A0-Ldo">
+            <objects>
+                <navigationController id="7Mb-k3-vcS" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T7C-ue-sjy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8z5-Rp-Om9" kind="relationship" relationship="rootViewController" id="OVP-HG-WH9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kfj-Fq-Eyg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1097" y="269"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="News_Feed" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -20,6 +101,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="477" y="269"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Placeholder" width="310" height="174"/>
+    </resources>
 </document>
