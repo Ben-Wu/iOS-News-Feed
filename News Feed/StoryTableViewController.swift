@@ -16,12 +16,14 @@ class StoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let savedStories = getLocalStories() {
+        
+        downloadStories()
+        
+        /*if let savedStories = getLocalStories() {
             stories = savedStories
         } else {
             downloadStories()
-        }
+        }*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,12 +111,15 @@ class StoryTableViewController: UITableViewController {
     }
     
     @IBAction func refresh(sender: AnyObject) {
+        debugPrint("Refreshing")
         downloadStories()
     }
     
+    
+    
     func downloadStories() {
         debugPrint("Downloading stories")
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://www.cbc.ca/json/cmlink/7.4195/")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://benwu.space:8000/story")!)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
@@ -122,15 +127,9 @@ class StoryTableViewController: UITableViewController {
                 debugPrint(error?.localizedDescription)
             } else {
                 do {
-                    let result = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSDictionary
+                    let contentItems = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSArray
                     
-                    if let contentList = result["contentlist"] {
-                        if let contentItems = contentList["contentitems"] {
-                            self.createStoriesFromJSON(contentItems as! NSArray)
-                        }
-                    } else {
-                        debugPrint("Couldn't parse JSON")
-                    }
+                    self.createStoriesFromJSON(contentItems)
                 } catch {
                     debugPrint("Couldn't parse JSON")
                 }
@@ -149,12 +148,19 @@ class StoryTableViewController: UITableViewController {
                 
                 let id = storyAsDictionary["id"] as! String
                 let title = storyAsDictionary["title"] as! String
-                let thumbUrl = "http://i.cbc.ca/1.3672538.1468167948!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_460/britain-wimbledon-tennis.jpg"
-                let summary = storyAsDictionary["description"] as! String
+                let status = storyAsDictionary["status"] as! String
+                let date = storyAsDictionary["date"] as! String
+                let summary = storyAsDictionary["summary"] as! String
+                let timestamp = storyAsDictionary["timestamp"] as! Int
+                let imageUrl = storyAsDictionary["imageUrl"] as! String
+                let categories = storyAsDictionary["categories"] as! [String]
                 
-                debugPrint("Saving story: id: \(id), title: \(title), thumbUrl: \(thumbUrl), summary: \(summary)")
+                let newStory = Story(id: id, title: title, status: status, date: date, summary: summary, timestamp: timestamp,
+                                     imageUrl: imageUrl, categories: categories)
                 
-                stories.append(Story(id: id, title: title, thumbUrl: thumbUrl, summary: summary))
+                debugPrint("Saving story: \(newStory.toString())")
+                
+                stories.append(newStory)
             }
             
             saveStories()

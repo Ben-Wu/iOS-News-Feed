@@ -12,25 +12,43 @@ class Story: NSObject, NSCoding {
 
     // MARK: Properties
 
-    var id: String;
-    var title: String;
-    var thumbUrl: String;
-    var summary: String;
+    var id: String
+    var title: String
+    var status: String
+    var date: String
+    var summary: String
+    var timestamp: Int
+    var imageUrl: String
+    var categories: [String]
     
     struct PropertyKey {
         static let idKey = "id"
         static let titleKey = "title"
-        static let thumbUrlKey = "urlKey"
+        static let statusKey = "status"
+        static let dateKey = "date"
         static let summaryKey = "summary"
+        static let timestampKey = "timestamp"
+        static let imageUrlKey = "imageUrl"
+        static let categoryKey = "catergories"
+    }
+    
+    func toString() -> String {
+        return "Story: id: \(id), title: \(title), status: \(status), date: \(date), " +
+            "summary: \(summary), timestamp: \(timestamp), imageUrl: \(imageUrl), categories: \(categories.count)"
     }
     
     // MARK: Initialization
     
-    init(id: String, title: String, thumbUrl: String, summary: String) {
+    init(id: String, title: String, status: String, date: String, summary: String, timestamp: Int,
+         imageUrl: String, categories: [String]) {
         self.id = id
         self.title = title
-        self.thumbUrl = thumbUrl
+        self.status = status
+        self.date = date
+        self.imageUrl = imageUrl
         self.summary = summary
+        self.timestamp = timestamp
+        self.categories = categories
         
         super.init()
     }
@@ -40,17 +58,26 @@ class Story: NSObject, NSCoding {
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(id, forKey: PropertyKey.idKey)
         aCoder.encodeObject(title, forKey: PropertyKey.titleKey)
-        aCoder.encodeObject(thumbUrl, forKey: PropertyKey.thumbUrlKey)
+        aCoder.encodeObject(status, forKey: PropertyKey.statusKey)
+        aCoder.encodeObject(date, forKey: PropertyKey.dateKey)
         aCoder.encodeObject(summary, forKey: PropertyKey.summaryKey)
+        aCoder.encodeInteger(timestamp, forKey: PropertyKey.timestampKey)
+        aCoder.encodeObject(imageUrl, forKey: PropertyKey.imageUrlKey)
+        aCoder.encodeObject(categories, forKey: PropertyKey.categoryKey)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         let id = aDecoder.decodeObjectForKey(PropertyKey.idKey) as! String
         let title = aDecoder.decodeObjectForKey(PropertyKey.titleKey) as! String
-        let thumbUrl = aDecoder.decodeObjectForKey(PropertyKey.thumbUrlKey) as! String
+        let status = aDecoder.decodeObjectForKey(PropertyKey.statusKey) as! String
+        let date = aDecoder.decodeObjectForKey(PropertyKey.dateKey) as! String
         let summary = aDecoder.decodeObjectForKey(PropertyKey.summaryKey) as! String
+        let timestamp = aDecoder.decodeIntegerForKey(PropertyKey.timestampKey)
+        let imageUrl = aDecoder.decodeObjectForKey(PropertyKey.imageUrlKey) as! String
+        let categories = aDecoder.decodeObjectForKey(PropertyKey.categoryKey) as! [String]
         
-        self.init(id: id, title: title, thumbUrl: thumbUrl, summary: summary)
+        self.init(id: id, title: title, status: status, date: date, summary: summary, timestamp: timestamp,
+                  imageUrl: imageUrl, categories: categories)
     }
     
     // MARK: Archiving Paths
