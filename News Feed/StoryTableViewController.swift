@@ -16,14 +16,12 @@ class StoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        downloadStories()
-        
-        /*if let savedStories = getLocalStories() {
+
+        if let savedStories = getLocalStories() {
             stories = savedStories
         } else {
             downloadStories()
-        }*/
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +46,12 @@ class StoryTableViewController: UITableViewController {
         let story = stories[indexPath.row]
 
         cell.title.text = story.title
+        
+        
+        let url = NSURL(string: story.imageUrl)
+        let imageData = NSData(contentsOfURL: url!)
+        
+        cell.thumbnail.image = UIImage(data: imageData!)
         
         return cell
     }
