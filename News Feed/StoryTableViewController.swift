@@ -17,9 +17,16 @@ class StoryTableViewController: UITableViewController {
     
     var stories = [Story]()
     
+    var loadingIndicator = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadingIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 40, 40))
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+        loadingIndicator.center = self.view.center
+        self.view.addSubview(loadingIndicator)
+        
         if let savedStories = getLocalStories() {
             stories = savedStories
         } else {
@@ -104,6 +111,24 @@ class StoryTableViewController: UITableViewController {
     
     // MARK: Loading
     
+    func showLoading() {
+        loadingIndicator.startAnimating()
+        loadingIndicator.backgroundColor = UIColor.clearColor()
+    }
+    
+    func hideLoadingDelayed() {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(),
+            {
+                self.hideLoading()
+            })
+    }
+    
+    func hideLoading() {
+        print("hideloading")
+        loadingIndicator.stopAnimating()
+        loadingIndicator.hidesWhenStopped = true
+    }
+    
     func saveStories() {
         debugPrint("Saving stories")
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(stories, toFile: Story.ArchiveURL.path!)
@@ -125,19 +150,21 @@ class StoryTableViewController: UITableViewController {
     
     func downloadStories() {
         debugPrint("Downloading stories")
+        showLoading()
         let request = NSMutableURLRequest(URL: NSURL(string: "http://benwu.space:8000/story")!)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
             if error != nil {
+                self.hideLoadingDelayed()
                 debugPrint(error?.localizedDescription)
             } else {
                 do {
                     let contentItems = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSArray
-                    
                     self.createStoriesFromJSON(contentItems)
                 } catch {
                     debugPrint("Couldn't parse JSON")
+                    self.hideLoadingDelayed()
                 }
             }
         }
@@ -166,7 +193,7 @@ class StoryTableViewController: UITableViewController {
                 let newStory = Story(id: id, title: title, status: status, date: date, summary: summary, timestamp: timestamp,
                                      imageUrl: imageUrl, categories: categories)
                 
-                debugPrint("Saving story: \(newStory.toString())")
+                debugPrint("Saving story: \(newStory.id)")
                 
                 stories.append(newStory)
             }
@@ -178,6 +205,7 @@ class StoryTableViewController: UITableViewController {
         } else {
             debugPrint("No stories found")
         }
+        hideLoadingDelayed()
     }
 
 }
