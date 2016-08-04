@@ -146,7 +146,9 @@ class StoryTableViewController: UITableViewController {
     
     func createStoriesFromJSON(jsonArr: NSArray) {
         if jsonArr.count > 0 {
-            debugPrint("Parsing stories")
+            debugPrint("Parsing \(jsonArr.count) stories")
+            
+            stories.removeAll()
             
             for rawStory in jsonArr {
                 
