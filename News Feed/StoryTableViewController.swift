@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
+
 
 class StoryTableViewController: UITableViewController {
 
@@ -49,9 +52,10 @@ class StoryTableViewController: UITableViewController {
         
         
         let url = NSURL(string: story.imageUrl)
-        let imageData = NSData(contentsOfURL: url!)
         
-        cell.thumbnail.image = UIImage(data: imageData!)
+        if url != nil {
+            cell.thumbnail.af_setImageWithURL(url!)
+        }
         
         return cell
     }
@@ -118,8 +122,6 @@ class StoryTableViewController: UITableViewController {
         debugPrint("Refreshing")
         downloadStories()
     }
-    
-    
     
     func downloadStories() {
         debugPrint("Downloading stories")

@@ -40,8 +40,8 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="nXF-F2-bVe" secondAttribute="trailing" id="Fzj-BM-D1j"/>
                                         <constraint firstItem="nXF-F2-bVe" firstAttribute="bottom" secondItem="wqG-xO-vua" secondAttribute="bottomMargin" id="Rbe-OD-Lzv"/>
                                         <constraint firstItem="HJa-Z7-RZS" firstAttribute="top" secondItem="wqG-xO-vua" secondAttribute="topMargin" id="Y8A-jv-dS0"/>
-                                        <constraint firstItem="HJa-Z7-RZS" firstAttribute="leading" secondItem="wqG-xO-vua" secondAttribute="leadingMargin" constant="20" id="j8O-I3-vnP"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="HJa-Z7-RZS" secondAttribute="trailing" constant="20" id="ked-q7-Zz3"/>
+                                        <constraint firstItem="HJa-Z7-RZS" firstAttribute="leading" secondItem="wqG-xO-vua" secondAttribute="leadingMargin" id="j8O-I3-vnP"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="HJa-Z7-RZS" secondAttribute="trailing" id="ked-q7-Zz3"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
