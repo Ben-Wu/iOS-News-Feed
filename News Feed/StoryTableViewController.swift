@@ -99,16 +99,22 @@ class StoryTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "OpenStory" {
+            let storyViewController = segue.destinationViewController as! StoryViewController
+            
+            if let selectedStoryCell = sender as? StoryCell {
+                let index = tableView.indexPathForCell(selectedStoryCell)!
+                let selectedStory = stories[index.row]
+                storyViewController.storyId = selectedStory.id
+                storyViewController.navigationItem.title = selectedStory.title
+            }
+        }
     }
-    */
-    
+
     // MARK: Loading
     
     func showLoading() {

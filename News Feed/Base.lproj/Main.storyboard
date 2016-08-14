@@ -47,6 +47,7 @@
                                 <connections>
                                     <outlet property="thumbnail" destination="HJa-Z7-RZS" id="sJw-Pb-bQd"/>
                                     <outlet property="title" destination="nXF-F2-bVe" id="0GL-9T-afj"/>
+                                    <segue destination="oaa-GN-hOY" kind="show" identifier="OpenStory" id="obh-VY-63Y"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -68,6 +69,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sh2-pM-4Ej" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-271" y="269"/>
+        </scene>
+        <!--Story View Controller-->
+        <scene sceneID="hjq-k8-QK6">
+            <objects>
+                <viewController id="oaa-GN-hOY" customClass="StoryViewController" customModule="News_Feed" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XmY-VZ-X6Z"/>
+                        <viewControllerLayoutGuide type="bottom" id="OlL-QU-Kzr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gbQ-zc-4eL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2q-SS-gea">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gi0-kW-y32">
+                                        <rect key="frame" x="8" y="0.0" width="584" height="600"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                                    </webView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Gi0-kW-y32" firstAttribute="leading" secondItem="O2q-SS-gea" secondAttribute="leading" id="YnD-cC-sza"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gi0-kW-y32" secondAttribute="trailing" id="iih-BB-lCF"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="O2q-SS-gea" firstAttribute="leading" secondItem="gbQ-zc-4eL" secondAttribute="leadingMargin" constant="-20" id="4dc-gR-BAf"/>
+                            <constraint firstItem="O2q-SS-gea" firstAttribute="bottom" secondItem="gbQ-zc-4eL" secondAttribute="bottomMargin" id="Y4C-f9-DiT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="O2q-SS-gea" secondAttribute="trailing" constant="-20" id="ckN-mh-PLf"/>
+                            <constraint firstItem="O2q-SS-gea" firstAttribute="top" secondItem="gbQ-zc-4eL" secondAttribute="topMargin" id="eJT-xm-WJ3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="O2q-SS-gea" id="biC-rZ-fh3"/>
+                        <outlet property="storyContent" destination="Gi0-kW-y32" id="PVb-wM-JZc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CXO-td-qAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="536" y="269"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="J4n-A0-Ldo">
@@ -101,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="477" y="269"/>
+            <point key="canvasLocation" x="79" y="1167"/>
         </scene>
     </scenes>
     <resources>

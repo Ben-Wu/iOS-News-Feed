@@ -4,4 +4,6 @@ use_frameworks!
 
 target 'News Feed' do
 	pod 'AlamofireImage', '~> 2.0'
+    pod 'SwiftyJSON'
+    pod 'Alamofire'
 end

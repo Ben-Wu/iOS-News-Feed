@@ -18,6 +18,7 @@
 		FF3FD29B1D32BBF800C54DDF /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3FD29A1D32BBF800C54DDF /* Story.swift */; };
 		FF3FD29F1D32C2C400C54DDF /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3FD29E1D32C2C400C54DDF /* StoryCell.swift */; };
 		FF3FD2A11D33009200C54DDF /* StoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3FD2A01D33009200C54DDF /* StoryTableViewController.swift */; };
+		FF8118561D6000AF00893DE3 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8118551D6000AF00893DE3 /* StoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		FF3FD29A1D32BBF800C54DDF /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		FF3FD29E1D32C2C400C54DDF /* StoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		FF3FD2A01D33009200C54DDF /* StoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryTableViewController.swift; sourceTree = "<group>"; };
+		FF8118551D6000AF00893DE3 /* StoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				FF3FD2771D32B27C00C54DDF /* AppDelegate.swift */,
 				FF3FD2791D32B27C00C54DDF /* ViewController.swift */,
 				FF3FD27B1D32B27C00C54DDF /* Main.storyboard */,
+				FF8118551D6000AF00893DE3 /* StoryViewController.swift */,
 				FF3FD2811D32B27C00C54DDF /* Assets.xcassets */,
 				FF3FD2831D32B27C00C54DDF /* LaunchScreen.storyboard */,
 				FF3FD2861D32B27C00C54DDF /* Info.plist */,
@@ -340,6 +343,7 @@
 				FF3FD2781D32B27C00C54DDF /* AppDelegate.swift in Sources */,
 				FF3FD2A11D33009200C54DDF /* StoryTableViewController.swift in Sources */,
 				FF3FD29B1D32BBF800C54DDF /* Story.swift in Sources */,
+				FF8118561D6000AF00893DE3 /* StoryViewController.swift in Sources */,
 				FF3FD29F1D32C2C400C54DDF /* StoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
