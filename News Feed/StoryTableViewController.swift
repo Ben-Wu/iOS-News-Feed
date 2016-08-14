@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import AlamofireImage
-
+import SwiftyJSON
 
 class StoryTableViewController: UITableViewController {
 
@@ -157,45 +157,36 @@ class StoryTableViewController: UITableViewController {
     func downloadStories() {
         debugPrint("Downloading stories")
         showLoading()
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://benwu.space:8000/story")!)
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request) {
-            (data, response, error) -> Void in
-            if error != nil {
-                self.hideLoadingDelayed()
-                debugPrint(error?.localizedDescription)
-            } else {
-                do {
-                    let contentItems = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSArray
-                    self.createStoriesFromJSON(contentItems)
-                } catch {
-                    debugPrint("Couldn't parse JSON")
-                    self.hideLoadingDelayed()
+        
+        Alamofire.request(.GET, "http://benwu.space:8000/story").responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    self.createStoriesFromJSON(json.arrayValue)
                 }
+            case .Failure(let error):
+                print(error)
+                self.hideLoadingDelayed()
             }
         }
-        task.resume()
     }
     
-    func createStoriesFromJSON(jsonArr: NSArray) {
-        if jsonArr.count > 0 {
-            debugPrint("Parsing \(jsonArr.count) stories")
+    func createStoriesFromJSON(storyItems: [JSON]) {
+        if storyItems.count > 0 {
+            debugPrint("Parsing \(storyItems.count) stories")
             
             stories.removeAll()
             
-            for rawStory in jsonArr {
-                
-                let storyAsDictionary = rawStory as! NSDictionary
-                
-                let id = storyAsDictionary["id"] as! String
-                let title = storyAsDictionary["title"] as! String
-                let status = storyAsDictionary["status"] as! String
-                let date = storyAsDictionary["date"] as! String
-                let summary = storyAsDictionary["summary"] as! String
-                let timestamp = storyAsDictionary["timestamp"] as! Int
-                let imageUrl = storyAsDictionary["imageUrl"] as! String
-                let categories = storyAsDictionary["categories"] as! [String]
-                
+            for rawStory in storyItems {
+                let id = rawStory["id"].string!
+                let title = rawStory["title"].string!
+                let status = rawStory["status"].string!
+                let date = rawStory["date"].string!
+                let summary = rawStory["summary"].string!
+                let timestamp = rawStory["timestamp"].int!
+                let imageUrl = rawStory["imageUrl"].string!
+                let categories = rawStory["categories"].arrayObject as! [String]
                 let newStory = Story(id: id, title: title, status: status, date: date, summary: summary, timestamp: timestamp,
                                      imageUrl: imageUrl, categories: categories)
                 
@@ -213,5 +204,4 @@ class StoryTableViewController: UITableViewController {
         }
         hideLoadingDelayed()
     }
-
 }
