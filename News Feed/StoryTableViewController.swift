@@ -27,11 +27,13 @@ class StoryTableViewController: UITableViewController {
         loadingIndicator.center = self.view.center
         self.view.addSubview(loadingIndicator)
         
-        if let savedStories = getLocalStories() {
+        downloadStories()
+        
+        /*if let savedStories = getLocalStories() {
             stories = savedStories
         } else {
             downloadStories()
-        }
+        }*/
     }
 
     override func didReceiveMemoryWarning() {
