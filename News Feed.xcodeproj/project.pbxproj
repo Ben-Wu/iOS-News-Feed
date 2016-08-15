@@ -113,17 +113,13 @@
 		FF3FD2761D32B27C00C54DDF /* News Feed */ = {
 			isa = PBXGroup;
 			children = (
+				FFE1080D1D615EAF00D34BD0 /* Models */,
 				FF3FD2771D32B27C00C54DDF /* AppDelegate.swift */,
-				FF3FD2791D32B27C00C54DDF /* ViewController.swift */,
-				FF3FD27B1D32B27C00C54DDF /* Main.storyboard */,
-				FF8118551D6000AF00893DE3 /* StoryViewController.swift */,
+				FFE1080C1D615E9F00D34BD0 /* UI */,
 				FF3FD2811D32B27C00C54DDF /* Assets.xcassets */,
 				FF3FD2831D32B27C00C54DDF /* LaunchScreen.storyboard */,
 				FF3FD2861D32B27C00C54DDF /* Info.plist */,
 				FF3FD27E1D32B27C00C54DDF /* News_Feed.xcdatamodeld */,
-				FF3FD29A1D32BBF800C54DDF /* Story.swift */,
-				FF3FD29E1D32C2C400C54DDF /* StoryCell.swift */,
-				FF3FD2A01D33009200C54DDF /* StoryTableViewController.swift */,
 			);
 			path = "News Feed";
 			sourceTree = "<group>";
@@ -135,6 +131,26 @@
 				FF3FD2911D32B27C00C54DDF /* Info.plist */,
 			);
 			path = "News FeedTests";
+			sourceTree = "<group>";
+		};
+		FFE1080C1D615E9F00D34BD0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				FF3FD27B1D32B27C00C54DDF /* Main.storyboard */,
+				FF8118551D6000AF00893DE3 /* StoryViewController.swift */,
+				FF3FD29E1D32C2C400C54DDF /* StoryCell.swift */,
+				FF3FD2791D32B27C00C54DDF /* ViewController.swift */,
+				FF3FD2A01D33009200C54DDF /* StoryTableViewController.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		FFE1080D1D615EAF00D34BD0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FF3FD29A1D32BBF800C54DDF /* Story.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

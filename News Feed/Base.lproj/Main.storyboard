@@ -82,27 +82,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2q-SS-gea">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2q-SS-gea">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gi0-kW-y32">
+                                    <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gi0-kW-y32">
                                         <rect key="frame" x="8" y="0.0" width="584" height="600"/>
                                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                                         <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                                     </webView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="Gi0-kW-y32" firstAttribute="leading" secondItem="O2q-SS-gea" secondAttribute="leading" id="YnD-cC-sza"/>
-                                    <constraint firstAttribute="trailing" secondItem="Gi0-kW-y32" secondAttribute="trailing" id="iih-BB-lCF"/>
-                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="O2q-SS-gea" firstAttribute="leading" secondItem="gbQ-zc-4eL" secondAttribute="leadingMargin" constant="-20" id="4dc-gR-BAf"/>
-                            <constraint firstItem="O2q-SS-gea" firstAttribute="bottom" secondItem="gbQ-zc-4eL" secondAttribute="bottomMargin" id="Y4C-f9-DiT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="O2q-SS-gea" secondAttribute="trailing" constant="-20" id="ckN-mh-PLf"/>
-                            <constraint firstItem="O2q-SS-gea" firstAttribute="top" secondItem="gbQ-zc-4eL" secondAttribute="topMargin" id="eJT-xm-WJ3"/>
+                            <constraint firstItem="O2q-SS-gea" firstAttribute="top" secondItem="gbQ-zc-4eL" secondAttribute="topMargin" constant="5" id="GHW-P7-1a9"/>
+                            <constraint firstItem="O2q-SS-gea" firstAttribute="bottom" secondItem="gbQ-zc-4eL" secondAttribute="bottomMargin" id="cbk-G8-OXH"/>
                         </constraints>
                     </view>
                     <connections>

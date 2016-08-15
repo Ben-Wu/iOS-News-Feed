@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class StoryViewController: UIViewController {
+class StoryViewController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var storyContent: UIWebView!
@@ -27,9 +27,10 @@ class StoryViewController: UIViewController {
                 case .Success:
                     if let value = response.result.value {
                         let json = JSON(value)
-                        print("JSON: \(json)")
+                        print("Story content for \(json["id"]) loaded")
                         self.storyContent.loadHTMLString(json["body"].string!,
                             baseURL: nil)
+                        self.storyContent.frame = CGRect(x: 10, y: 10, width: self.view.frame.size.width - 15, height: self.storyContent!.scrollView.contentSize.height - 30)
                     }
                 case .Failure(let error):
                     print(error)
@@ -37,8 +38,6 @@ class StoryViewController: UIViewController {
             }
         }
     }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
