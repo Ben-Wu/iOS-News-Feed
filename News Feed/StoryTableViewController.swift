@@ -113,7 +113,8 @@ class StoryTableViewController: UITableViewController {
                 let index = tableView.indexPathForCell(selectedStoryCell)!
                 let selectedStory = stories[index.row]
                 storyViewController.storyId = selectedStory.id
-                storyViewController.navigationItem.title = selectedStory.title
+                storyViewController.headlineImage = selectedStoryCell.thumbnail.image
+                storyViewController.navigationItem.title = selectedStory.categories[1]
             }
         }
     }
