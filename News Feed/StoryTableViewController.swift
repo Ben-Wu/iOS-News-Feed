@@ -17,11 +17,16 @@ class StoryTableViewController: UITableViewController {
     
     var stories = [Story]()
     
+    var showingDialog = false
+    
     var loadingIndicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(StoryTableViewController.longPress(_:)))
+        self.tableView.addGestureRecognizer(longPressRecognizer)
+        
         loadingIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 40, 40))
         loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
         loadingIndicator.center = self.view.center
@@ -40,7 +45,7 @@ class StoryTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -75,6 +80,31 @@ class StoryTableViewController: UITableViewController {
         return false
     }
 
+    // MARK: actions
+    
+    func longPress(sender: UILongPressGestureRecognizer) {
+        if self.presentedViewController != nil {
+            return
+        }
+        print("Opening summary")
+        let location = sender.locationInView(self.tableView)
+        if let tappedIndexRow = tableView.indexPathForRowAtPoint(location) {
+            if tappedIndexRow.row < stories.count {
+                let storyCell = tableView.cellForRowAtIndexPath(tappedIndexRow) as? StoryCell
+                let story = stories[tappedIndexRow.row]
+                let alertController = UIAlertController(title: story.title, message: story.summary, preferredStyle: .Alert)
+                let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                let readMore = UIAlertAction(title: "Read More", style: .Default) {(action) in
+                    self.performSegueWithIdentifier("OpenStory", sender: storyCell)
+                }
+                alertController.addAction(cancel)
+                alertController.addAction(readMore)
+                self.presentViewController(alertController, animated: true, completion: nil)
+                return
+            }
+        }
+    }
+    
     /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

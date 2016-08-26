@@ -44,6 +44,7 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="HJa-Z7-RZS" secondAttribute="trailing" id="ked-q7-Zz3"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="thumbnail" destination="HJa-Z7-RZS" id="sJw-Pb-bQd"/>
                                     <outlet property="title" destination="nXF-F2-bVe" id="0GL-9T-afj"/>
