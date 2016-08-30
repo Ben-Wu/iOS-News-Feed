@@ -77,7 +77,15 @@ class StoryTableViewController: UITableViewController {
 
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let saveAction = UITableViewRowAction(style: .Default, title: "Save") { action, index in
+            print(self.stories[indexPath.row].title)
+        }
+        
+        return [saveAction]
     }
 
     // MARK: actions
@@ -92,7 +100,8 @@ class StoryTableViewController: UITableViewController {
             if tappedIndexRow.row < stories.count {
                 let storyCell = tableView.cellForRowAtIndexPath(tappedIndexRow) as? StoryCell
                 let story = stories[tappedIndexRow.row]
-                let alertController = UIAlertController(title: story.title, message: story.summary, preferredStyle: .Alert)
+                let alertController = UIAlertController(title: story.title, message: story.date + "\n\n" + story.summary, preferredStyle: .Alert)
+        
                 let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
                 let readMore = UIAlertAction(title: "Read More", style: .Default) {(action) in
                     self.performSegueWithIdentifier("OpenStory", sender: storyCell)
