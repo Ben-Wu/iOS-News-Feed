@@ -64,6 +64,7 @@ class StoryTableViewController: UITableViewController {
 
         cell.title.text = story.title
         
+        cell.title.layoutMargins = UIEdgeInsetsMake(15, 5, 15, 5)
         
         let url = NSURL(string: story.imageUrl)
         

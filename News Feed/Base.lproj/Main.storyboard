@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7Mb-k3-vcS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7Mb-k3-vcS">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Top Stories-->
@@ -22,26 +21,27 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="228"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="HJa-Z7-RZS">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="HJa-Z7-RZS">
                                             <rect key="frame" x="106" y="0.0" width="388" height="228"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Milos Raonic falls to Andy Murray in Wimbledon final" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nXF-F2-bVe">
-                                            <rect key="frame" x="-78" y="189" width="399" height="39"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Milos Raonic falls to Andy Murray in Wimbledon final" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nXF-F2-bVe">
+                                            <rect key="frame" x="101" y="189" width="399" height="54"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="shadowOffset" width="0.0" height="40"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="HJa-Z7-RZS" secondAttribute="bottom" id="CbJ-0t-Jns"/>
-                                        <constraint firstItem="nXF-F2-bVe" firstAttribute="leading" secondItem="wqG-xO-vua" secondAttribute="leadingMargin" id="EKY-lO-hcx"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="nXF-F2-bVe" secondAttribute="trailing" id="Fzj-BM-D1j"/>
-                                        <constraint firstItem="nXF-F2-bVe" firstAttribute="bottom" secondItem="wqG-xO-vua" secondAttribute="bottomMargin" id="Rbe-OD-Lzv"/>
-                                        <constraint firstItem="HJa-Z7-RZS" firstAttribute="top" secondItem="wqG-xO-vua" secondAttribute="topMargin" id="Y8A-jv-dS0"/>
-                                        <constraint firstItem="HJa-Z7-RZS" firstAttribute="leading" secondItem="wqG-xO-vua" secondAttribute="leadingMargin" id="j8O-I3-vnP"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="HJa-Z7-RZS" secondAttribute="trailing" id="ked-q7-Zz3"/>
+                                        <constraint firstAttribute="bottom" secondItem="nXF-F2-bVe" secondAttribute="bottom" id="2Mv-SV-kAy"/>
+                                        <constraint firstAttribute="trailing" secondItem="HJa-Z7-RZS" secondAttribute="trailing" id="97t-0f-7y3"/>
+                                        <constraint firstItem="nXF-F2-bVe" firstAttribute="top" secondItem="wqG-xO-vua" secondAttribute="top" id="ONo-cx-qFZ"/>
+                                        <constraint firstItem="HJa-Z7-RZS" firstAttribute="leading" secondItem="wqG-xO-vua" secondAttribute="leading" id="V6l-1a-SwP"/>
+                                        <constraint firstItem="HJa-Z7-RZS" firstAttribute="top" secondItem="wqG-xO-vua" secondAttribute="top" id="VGS-8i-BZH"/>
+                                        <constraint firstAttribute="trailing" secondItem="nXF-F2-bVe" secondAttribute="trailing" id="VWV-7f-Cga"/>
+                                        <constraint firstAttribute="bottom" secondItem="HJa-Z7-RZS" secondAttribute="bottom" id="p16-KS-bEu"/>
+                                        <constraint firstItem="nXF-F2-bVe" firstAttribute="leading" secondItem="wqG-xO-vua" secondAttribute="leading" id="sAo-sG-nfC"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
